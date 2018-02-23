@@ -8,7 +8,16 @@ class RecordGenerator {
         this.columns = columns
     }
 
-    String newRecord() {
+    String genericString() {
         'Some Text'
+    }
+
+    String newRecord() {
+        String record = ''
+        columns.each {
+            record += genericString().substring(0, it.length)
+            (1..it.padding).each { record += ' '}
+        }
+        record
     }
 }
