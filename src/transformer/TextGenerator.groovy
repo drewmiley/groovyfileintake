@@ -8,15 +8,24 @@ class TextGenerator {
 
     final String fileName
 
-    TextGenerator(String fileRoot) {
+    final int numberOfRecords
+
+    TextGenerator(String fileRoot, int numberOfRecords = 100) {
         String[] splitName = fileRoot.split('/')
-        directory = Arrays.stream(Arrays.copyOf(splitName, splitName.length - 1))
+        this.directory = Arrays.stream(Arrays.copyOf(splitName, splitName.length - 1))
             .collect(Collectors.joining('/'))
-        fileName = splitName[splitName.length - 1]
+        this.fileName = splitName[splitName.length - 1]
+        this.numberOfRecords = numberOfRecords
+    }
+
+    String generatedRecord() {
+        'Some Text'
     }
 
     String generatedText() {
-        'Some Text \n'
+        String generatedText = ''
+        (1..numberOfRecords).each { generatedText += "${ generatedRecord() }\n" }
+        generatedText
     }
 
     void generateFile() {

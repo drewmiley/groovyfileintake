@@ -46,7 +46,9 @@ class TextGeneratorTest extends GroovyTestCase {
     }
 
     void testGeneratedText() {
-        assert textGenerator.generatedText() == 'Some Text \n'
+        String generatedText = ''
+        (1..100).each { generatedText += 'Some Text\n' }
+        assert textGenerator.generatedText() == generatedText
     }
 
     void testFileIsGenerated() {
@@ -60,6 +62,8 @@ class TextGeneratorTest extends GroovyTestCase {
         textGenerator.generateFile()
 
         def file = new File(filePath)
-        assert file.getText() == 'Some Text \n'
+        String generatedText = ''
+        (1..100).each { generatedText += 'Some Text\n' }
+        assert file.getText() == generatedText
     }
 }
