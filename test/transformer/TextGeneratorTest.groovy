@@ -2,9 +2,18 @@ package transformer
 
 class TextGeneratorTest extends GroovyTestCase {
 
+    private String filePath
+
     private TextGenerator textGenerator
 
+    void setUp() {
+        filePath = 'resources/generated.txt'
+        textGenerator = new TextGenerator(filePath)
+    }
+
     void tearDown() {
+        def file = new File(filePath)
+        file.delete()
         textGenerator = null
     }
 
@@ -34,5 +43,23 @@ class TextGeneratorTest extends GroovyTestCase {
 
         textGenerator = new TextGenerator('A/B/C/D')
         assert textGenerator.getFileName() == 'D'
+    }
+
+    void testGeneratedText() {
+        assert textGenerator.generatedText() == 'Some Text \n'
+    }
+
+    void testFileIsGenerated() {
+        textGenerator.generateFile()
+
+        def file = new File(filePath)
+        assert file.exists()
+    }
+
+    void testFileIsGeneratedWithCorrectText() {
+        textGenerator.generateFile()
+
+        def file = new File(filePath)
+        assert file.getText() == 'Some Text \n'
     }
 }

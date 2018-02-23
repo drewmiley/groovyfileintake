@@ -15,8 +15,17 @@ class TextGenerator {
         fileName = splitName[splitName.length - 1]
     }
 
+    String generatedText() {
+        'Some Text \n'
+    }
+
     void generateFile() {
-        System.out.println(directory)
-        System.out.println(fileName)
+        def folder = new File(directory)
+
+        if (!folder.exists() ) {
+            folder.mkdirs()
+        }
+
+        new File( folder, fileName ).withWriterAppend { text -> text << generatedText() }
     }
 }

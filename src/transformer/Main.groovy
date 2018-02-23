@@ -1,7 +1,9 @@
 package transformer
 
-def textGenerator = new TextGenerator('resources/Data1')
+def resourcesDirectory = './../../resources/'
+
+def textGenerator = new TextGenerator("${ resourcesDirectory }Data1.txt")
 textGenerator.generateFile()
 
-def input = new FileReader('./../../resources/lines.txt')
+def input = new FileReader("${ resourcesDirectory }lines.txt")
 input.run()
