@@ -1,5 +1,7 @@
 package transformer
 
+import java.util.stream.Collectors
+
 class TextGenerator {
 
     final String directory
@@ -7,8 +9,10 @@ class TextGenerator {
     final String fileName
 
     TextGenerator(String fileRoot) {
-        directory = fileRoot
-        fileName = fileRoot
+        String[] splitName = fileRoot.split('/')
+        directory = Arrays.stream(Arrays.copyOf(splitName, splitName.length - 1))
+            .collect(Collectors.joining('/'))
+        fileName = splitName[splitName.length - 1]
     }
 
     void generateFile() {
