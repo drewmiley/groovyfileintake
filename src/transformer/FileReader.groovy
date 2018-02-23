@@ -4,11 +4,11 @@ import java.nio.file.Files
 import java.nio.file.Paths
 import java.util.stream.Collectors
 
-class Input {
+class FileReader {
 
     final List<String> fileData
 
-    Input(String fileName) {
+    FileReader(String fileName) {
         fileData = Files.lines(Paths.get(fileName))
                 .collect(Collectors.toList())
     }

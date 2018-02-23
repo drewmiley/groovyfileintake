@@ -1,19 +1,19 @@
 package transformer
 
-class InputTest extends GroovyTestCase {
+class FileReaderTest extends GroovyTestCase {
 
-    private Input input
+    private FileReader fileReader
 
     void setUp() {
-        input = new Input('resources/lines.txt')
+        fileReader = new FileReader('resources/lines.txt')
     }
 
     void tearDown() {
-        input = null
+        fileReader = null
     }
 
     void testConstructorSetsFile() {
-        List<String> fileData = input.getFileData()
+        List<String> fileData = fileReader.getFileData()
         assert fileData.size() == 5
         assert fileData.get(0) == 'line 1'
         assert fileData.get(1) == 'line 2'

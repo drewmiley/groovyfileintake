@@ -1,4 +1,4 @@
 package transformer
 
-def input = new Input('./../../resources/lines.txt')
+def input = new FileReader('./../../resources/lines.txt')
 input.run()
