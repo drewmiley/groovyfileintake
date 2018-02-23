@@ -2,12 +2,11 @@ package transformer
 
 class TextGeneratorTest extends GroovyTestCase {
 
-    private String filePath
+    private String filePath = 'resources/generated.txt'
 
     private TextGenerator textGenerator
 
     void setUp() {
-        filePath = 'resources/generated.txt'
         textGenerator = new TextGenerator(filePath)
     }
 
