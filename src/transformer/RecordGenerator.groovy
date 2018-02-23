@@ -2,8 +2,10 @@ package transformer
 
 class RecordGenerator {
 
-    RecordGenerator() {
+    private List<Column> columns
 
+    RecordGenerator(List<Column> columns = null) {
+        this.columns = columns
     }
 
     String newRecord() {
