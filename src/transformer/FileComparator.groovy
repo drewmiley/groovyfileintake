@@ -8,21 +8,40 @@ class FileComparator {
 
     private String matchColumnName
 
-    FileComparator(List<String> left, List<String> right, String matchColumnName) {
+    List<Column> columns
+
+    FileComparator(List<String> left, List<String> right, String matchColumnName = null, List<Column> columns = null) {
         this.left = left
         this.right = right
-        this.matchColumnName = matchColumnName
     }
 
     List<String> common() {
-        null
+        List<String> common = new ArrayList<String>()
+        left.each {
+            if (right.contains(it)) {
+                common << it
+            }
+        }
+        common
     }
 
     List<String> deltaLeft() {
-        null
+        List<String> deltaLeft = new ArrayList<String>()
+        left.each {
+            if (!right.contains(it)) {
+                deltaLeft << it
+            }
+        }
+        deltaLeft
     }
 
     List<String> deltaRight() {
-        null
+        List<String> deltaRight = new ArrayList<String>()
+        right.each {
+            if (!left.contains(it)) {
+                deltaRight << it
+            }
+        }
+        deltaRight
     }
 }
