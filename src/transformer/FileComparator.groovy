@@ -16,32 +16,20 @@ class FileComparator {
     }
 
     List<String> common() {
-        List<String> common = new ArrayList<String>()
-        left.each {
-            if (right.contains(it)) {
-                common << it
-            }
-        }
+        List<String> common = new ArrayList<String>(left)
+        common.retainAll(right)
         common
     }
 
     List<String> deltaLeft() {
-        List<String> deltaLeft = new ArrayList<String>()
-        left.each {
-            if (!right.contains(it)) {
-                deltaLeft << it
-            }
-        }
+        List<String> deltaLeft = new ArrayList<String>(left)
+        deltaLeft.removeAll(right)
         deltaLeft
     }
 
     List<String> deltaRight() {
-        List<String> deltaRight = new ArrayList<String>()
-        right.each {
-            if (!left.contains(it)) {
-                deltaRight << it
-            }
-        }
+        List<String> deltaRight = new ArrayList<String>(right)
+        deltaRight.removeAll(left)
         deltaRight
     }
 }
