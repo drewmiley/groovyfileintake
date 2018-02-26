@@ -9,13 +9,14 @@ class RecordGenerator {
     }
 
     String genericString() {
-        'Some Text'
+        Math.random() > 0.95 ? 'Dumb Luck' : 'Some Text'
     }
 
-    String newRecord() {
+    String newRecord(int i) {
         String record = ''
+        String text = genericString()
         columns.each {
-            record += genericString().substring(0, it.length)
+            record += "${ i }${ text }".substring(0, it.length)
             (1..it.padding).each { record += ' '}
         }
         record

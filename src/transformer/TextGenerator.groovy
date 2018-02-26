@@ -21,13 +21,13 @@ class TextGenerator {
         this.numberOfRecords = numberOfRecords
     }
 
-    String generatedRecord() {
-        recordGenerator.newRecord()
+    String generatedRecord(int i) {
+        recordGenerator.newRecord(i)
     }
 
     String generatedText() {
         String generatedText = ''
-        (1..numberOfRecords).each { generatedText += "${ generatedRecord() }\n" }
+        (1..numberOfRecords).eachWithIndex { d, i -> generatedText += "${ generatedRecord(i) }\n" }
         generatedText
     }
 
