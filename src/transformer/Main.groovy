@@ -13,4 +13,16 @@ def textGenerator = new TextGenerator("${ resourcesDirectory }Data1.txt", record
 textGenerator.generateFile()
 
 def input = new FileReader("${ resourcesDirectory }lines.txt")
-input.run()
+input.print()
+
+def compare1 = new FileReader("${ resourcesDirectory }record1.txt")
+def compare2 = new FileReader("${ resourcesDirectory }record2.txt")
+
+def fileComparator = new FileComparator(compare1.getFileData(), compare2.getFileData())
+def commonData = fileComparator.common()
+def textToWrite = ''
+
+commonData.each { textToWrite += "${ it }\n"}
+
+def fileWriter = new FileWriter(resourcesDirectory, 'commonData.txt', textToWrite)
+fileWriter.write()

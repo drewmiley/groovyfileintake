@@ -13,7 +13,7 @@ class FileReader {
                 .collect(Collectors.toList())
     }
 
-    void run() {
+    void print() {
         try {
             fileData.forEach( { d -> System.out.println(d) } )
         } catch (IOException e) {
