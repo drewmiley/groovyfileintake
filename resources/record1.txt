@@ -1,0 +1,11 @@
+0Some  0S  0dfds
+1Some  1S  1Some
+2Some  2S  2Dumb
+3Some  3S  3Some
+4Dumb  4S  4wrew
+5Some  5S  5Some
+6Some  6S  6Dumb
+7Some  7S  7Dumb
+8Some  8S  8Some
+9Some  9S  9Dumb
+10Some 10  10Som
